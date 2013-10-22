@@ -1,5 +1,3 @@
 
-
-nicer way to pass the previewFormat
-  how to set the width/height of the add button?
-
+- replace local maiko.js url with cdn url
+- set maiko.js url in config

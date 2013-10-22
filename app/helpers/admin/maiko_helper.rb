@@ -1,5 +1,8 @@
 module Admin::MaikoHelper
 
+  @@maikojs_url = "http://app.william.dev/maiko.js"
+  # @@maikojs_url = "http://cdn.maikoapp.com/maiko.js"
+
   @@default_preview_options = { width: 170, height: 100, crop: false }
 
   ##
@@ -23,6 +26,10 @@ module Admin::MaikoHelper
   ##
   # Internal methods used in the admin template.
   #
+
+  def maikojs_url
+    @@maikojs_url
+  end
 
   def maiko_get_preview_format(model, attribute)
     options = model.class.typus_maiko_options[attribute.to_sym][:preview] || {}

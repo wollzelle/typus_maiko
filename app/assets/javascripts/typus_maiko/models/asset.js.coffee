@@ -1,5 +1,8 @@
 class Typus.Maiko.Asset extends Backbone.Model
 
+  urlKeys:
+    ['public_url', 'maiko_url']
+
   defaults:
     caption: []
 
@@ -22,9 +25,10 @@ class Typus.Maiko.Asset extends Backbone.Model
   # Set / normalize the url.
   # Provides backwards compatibility with typus_fluxiom
   setUrl: ->
-    if public_url = @get 'public_url'
-      @set 'url', public_url
-      @unset 'public_url'
+    for key in @urlKeys
+      if value = @get key
+        @set 'url', value
+        @unset key
 
   # Set asset thumbnail.
   # Provides backwards compatibility with typus_fluxiom

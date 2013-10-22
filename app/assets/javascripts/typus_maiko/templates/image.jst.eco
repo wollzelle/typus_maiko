@@ -1,0 +1,17 @@
+<img src="<%= @thumbnail %>">
+
+<a href="#" class="mk-btn mk-remove-btn" title="Remove" tabindex="-1">&#215;</a>
+
+<input type="hidden" name="<%= @attributeName %>[url]" value="<%= @url %>">
+
+<% if @locales.length: %>
+
+  <% for locale in @locales: %>
+    <textarea class="mk-caption translation lang-<%= locale %>" name="<%= "#{@attributeName}[caption][#{locale}]" %>"><%= @caption[locale] %></textarea>
+  <% end %>
+
+<% else: %>
+
+  <textarea class="mk-caption" name="<%= @attributeName %>[caption]"><%= @caption %></textarea>
+
+<% end %>

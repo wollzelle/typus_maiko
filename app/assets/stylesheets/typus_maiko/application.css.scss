@@ -1,0 +1,108 @@
+
+/* Maiko Gallery
+------------------------------------- */
+
+.mk-gallery {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  zoom: 1;
+  margin-bottom: 2em !important;
+}
+
+.mk-item {
+  position: relative;
+  float: left;
+  list-style: none;
+  margin: 5px 5px 20px 5px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.mk-item img {
+  vertical-align: middle;
+}
+
+.mk-image:hover {
+  cursor: move;
+}
+
+.mk-gallery .ui-sortable-placeholder {
+  visibility: visible !important;
+  border: 1px dashed #ccc;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.mk-caption {
+  position: absolute;
+  overflow: hidden;
+  resize: none;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  min-height: 0 !important;
+  border: 0;
+  padding: 0;
+  font-family: Verdana;
+  font-size: 9px !important;
+  color: #666;
+  -webkit-transition: all .2s;
+     -moz-transition: all .2s;
+          transition: all .2s;
+}
+
+.mk-gallery .ui-sortable-helper .mk-caption {
+  opacity: 0;
+}
+
+.mk-caption:hover {
+  background-color: #fffce1;
+}
+
+.mk-caption:focus {
+  background: #fff !important;
+  color: #000;
+  border-color: #999;
+  height: 50px;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+.mk-btn {
+  line-height: 1em;
+  font-weight: bold;
+  background: #fff;
+  display: block;
+}
+
+.mk-remove-btn {
+  color: #333;
+  text-decoration: none !important;
+  padding: 3px 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.mk-add-btn {
+  display: block;
+  width: 150px;
+  line-height: 100px;
+  background: #fafafa;
+  text-align: center;
+  border: 1px solid #eee;
+  -webkit-transition: all .3s;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.mk-add-btn:hover {
+  border-color: #ccc;
+}

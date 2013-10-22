@@ -1,0 +1,60 @@
+<%
+  attribute_name =  maiko_get_attribute_name(@item, attribute)
+  preview_format =  maiko_get_preview_format(@item, attribute)
+  json           =  maiko_get_json(@item, attribute)
+  account        =  maiko_get_account(@item, attribute)
+  stack          =  maiko_get_stack(@item, attribute)
+  locales        =  maiko_get_locales(@item, attribute)
+%>
+
+<% unless @typus_maiko_assets_loaded %>
+
+  <% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "typus_maiko/application" %>
+  <% end %>
+
+  <% content_for :javascripts do %>
+    <%= javascript_include_tag "http://app.william.dev/maiko.js" %>
+    <%= javascript_include_tag "typus_maiko/application" %>
+  <% end %>
+
+  <% @typus_maiko_assets_loaded = true %>
+
+<% end %>
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      $('#<%= attribute_id %>').maikoGallery({
+        accountId: '<%= account %>',
+        stackId: '<%= stack %>',
+        attributeName: '<%= attribute_name %>',
+        previewFormat: '<%= preview_format[:url] %>',
+        data: <%= json %>,
+        locales: <%= locales %>
+      })
+    })
+  </script>
+<% end %>
+
+<li id="<%= attribute_id %>">
+
+  <%= form.label attribute, label_text %>
+
+  <ul id="mk-gallery-<%= attribute_id %>" class="mk-gallery">
+    <li class="mk-item mk-item-add">
+      <a href="#" class="mk-btn mk-add-btn">Add <%= attribute %> +</a>
+    </li>
+  </ul>
+
+  <style>
+    #mk-gallery-<%= attribute_id %> .mk-item {
+      height: <%= preview_format[:height] %>px;
+    }
+    #mk-gallery-<%= attribute_id %> .mk-add-btn {
+      width: <%= preview_format[:width] %>px;
+      line-height: <%= preview_format[:height] %>px;
+    }
+  </style>
+
+</li>

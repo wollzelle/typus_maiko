@@ -1,0 +1,1 @@
+<input class="mk-empty" type="hidden" name="<%= @attributeName %>" value="">

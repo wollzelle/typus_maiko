@@ -6,7 +6,7 @@ class Typus.Maiko.GalleryView extends Backbone.View
     'click .mk-add-btn': 'choose'
 
   initialize: (options) ->
-    { @accountId, @stackId } = options
+    { @accountId, @stackId, @iframe } = options
     @setElements()
     @listen()
     @makeSortable()
@@ -23,7 +23,7 @@ class Typus.Maiko.GalleryView extends Backbone.View
 
   choose: (e) ->
     e.preventDefault()
-    Maiko.choose { @accountId, @stackId, success: @onChoose }
+    Maiko.choose { @accountId, @stackId, @iframe, success: @onChoose }
 
   onChoose: (assets) =>
     @collection.add assets

@@ -31,7 +31,7 @@ module Admin::MaikoHelper
     @@maikojs_url
   end
 
-  def maiko_get_preview_format(model, attribute)
+  def maiko_preview_format(model, attribute)
     options = model.class.typus_maiko_options[attribute.to_sym][:preview] || {}
     config = @@default_preview_options.merge(options)
     width    = config[:width]
@@ -42,27 +42,27 @@ module Admin::MaikoHelper
     { :width => width, :height => height, :url => "#{fill}#{geometry}.jpg" }
   end
 
-  def maiko_get_attribute_name(model, attribute)
+  def maiko_attribute_name(model, attribute)
     model = ActiveModel::Naming.param_key(model) # => model_name
     "#{model}[#{attribute}]"
   end
 
-  def maiko_get_account(model, attribute)
+  def maiko_account(model, attribute)
     model.class.typus_maiko_options[attribute.to_sym][:account]
   end
 
-  def maiko_get_stack(model, attribute)
+  def maiko_stack(model, attribute)
     model.class.typus_maiko_options[attribute.to_sym][:stack]
   end
 
-  def maiko_get_json(model, attribute)
+  def maiko_json(model, attribute)
     gallery_items = model[attribute].delete_if {|x| x == ""} rescue nil
     raw gallery_items.values.to_json rescue []
   end
 
-  def maiko_get_locales(model, attribute)
+  def maiko_locales(model, attribute)
     if maiko_translatable?(model, attribute)
-      raw maiko_locales.keys.to_json
+      raw Typus::Translate::Configuration.config['locales'].keys.to_json
     else
       raw [].to_json
     end
@@ -72,8 +72,8 @@ module Admin::MaikoHelper
     model.class.typus_maiko_options[attribute.to_sym][:translatable] || false
   end
 
-  def maiko_locales
-    Typus::Translate::Configuration.config['locales']
+  def maiko_iframe_option(model, attribute)
+    model.class.typus_maiko_options[attribute.to_sym][:iframe] == false ? false : true
   end
 
 end

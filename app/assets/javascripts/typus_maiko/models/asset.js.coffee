@@ -43,7 +43,7 @@ class Typus.Maiko.Asset extends Backbone.Model
       @set 'caption', title
 
   convertMaikoUrl: (url, format) ->
-    Maiko.viewUrl url, format
+    Maiko.image url, format
 
   convertFluxiomUrl: (url, format) ->
     path = url.match(/(.*\/([^_|.]*))/)[0]

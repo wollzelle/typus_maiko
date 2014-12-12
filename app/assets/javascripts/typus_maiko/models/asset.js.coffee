@@ -19,7 +19,8 @@ class Typus.Maiko.Asset extends Backbone.Model
 
   # Set the name used in the form for saving this model.
   setAttributeName: ->
-    attributeName = @collection.attributeName + '[' + @cid + ']'
+    attributeName = @collection.attributeName + '[]'
+    # attributeName = @collection.attributeName + '[' + @cid + ']'
     @set { attributeName }
 
   # Set / normalize the url.

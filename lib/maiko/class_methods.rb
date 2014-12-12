@@ -16,7 +16,7 @@ module Typus
         args.each do |field|
           self.typus_maiko_fields << field
           self.typus_maiko_options[field] = options
-          serialize field
+          #serialize field
         end
 
         extend TemplateMethods unless extended_modules.include?(TemplateMethods)

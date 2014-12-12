@@ -14,6 +14,12 @@ In your `Gemfile`:
 
 ## Configuration
 
+**Migration:**
+
+Add the required column(s) as type json
+
+    rails g Post gallery:json, profile_fotos:json
+
 **In your model:**
 
     class Post < ActiveRecord::Base

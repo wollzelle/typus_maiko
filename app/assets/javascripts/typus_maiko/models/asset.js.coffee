@@ -1,15 +1,12 @@
 class Typus.Maiko.Asset extends Backbone.Model
 
-  urlKeys:
-    ['public_url', 'maiko_url']
-
   defaults:
     caption: []
 
   initialize: ->
     @setPreviewFormat()
     @setAttributeName()
-    @setUrl()
+    @setUrl() unless @attributes.url?
     @setThumbnail()
     @setCaption()
 
@@ -25,10 +22,9 @@ class Typus.Maiko.Asset extends Backbone.Model
   # Set / normalize the url.
   # Provides backwards compatibility with typus_fluxiom
   setUrl: ->
-    for key in @urlKeys
-      if value = @get key
-        @set 'url', value
-        @unset key
+    key = if @collection.use_ssl? then 'maiko_https_url' else 'maiko_url'
+    @set 'url', @get key
+    @set { maiko_url: undefined, maiko_https_url: undefined}, unset: true, silent:true
 
   # Set asset thumbnail.
   # Provides backwards compatibility with typus_fluxiom

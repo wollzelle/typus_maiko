@@ -54,6 +54,10 @@ module Admin::MaikoHelper
     model.class.typus_maiko_options[attribute.to_sym][:stack]
   end
 
+  def maiko_use_ssl(model, attribute)
+    model.class.typus_maiko_options[attribute.to_sym][:use_ssl] || false
+  end
+
   def maiko_json(model, attribute)
     gallery_items = model[attribute].delete_if {|x| x == ""} rescue nil
     raw gallery_items.values.to_json rescue []

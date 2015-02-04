@@ -1,6 +1,7 @@
 <%
   attribute_name =  maiko_attribute_name(@item, attribute)
   preview_format =  maiko_preview_format(@item, attribute)
+  use_ssl        =  maiko_use_ssl(@item, attribute)
   iframe_option  =  maiko_iframe_option(@item, attribute)
   json           =  maiko_json(@item, attribute)
   account_id     =  maiko_account(@item, attribute)
@@ -32,6 +33,7 @@
         iframe: <%= iframe_option %>,
         attributeName: '<%= attribute_name %>',
         previewFormat: '<%= preview_format[:url] %>',
+        use_ssl: <%= use_ssl %>,
         data: <%= json %>,
         locales: <%= locales %>
       })

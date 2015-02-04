@@ -20,27 +20,17 @@ class Typus.Maiko.Asset extends Backbone.Model
     @set { attributeName }
 
   # Set / normalize the url.
-  # Provides backwards compatibility with typus_fluxiom
   setUrl: ->
     key = if @collection.useSSL? then 'maiko_https_url' else 'maiko_url'
     @set 'url', @get key
     @set { maiko_url: undefined, maiko_https_url: undefined}, unset: true, silent:true
 
   # Set asset thumbnail.
-  # Provides backwards compatibility with typus_fluxiom
   setThumbnail: ->
     { url, previewFormat } = @attributes
-    convert = if url.match('flxd.it')? then 'convertFluxiomUrl' else 'convertMaikoUrl'
-    thumbnail = this[convert] url, previewFormat
+    thumbnail = Maiko.image url, previewFormat
     @set { thumbnail }
 
   setCaption: ->
     if title = @get 'title'
       @set 'caption', title
-
-  convertMaikoUrl: (url, format) ->
-    Maiko.image url, format
-
-  convertFluxiomUrl: (url, format) ->
-    path = url.match(/(.*\/([^_|.]*))/)[0]
-    path + '_' + format

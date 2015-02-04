@@ -11,15 +11,8 @@ module Admin::MaikoHelper
   def maiko_image_for(url, format)
     return "#" if url.nil? || format.nil?
 
-    # backwards compatiblity for fluxiom urls
-    if url.include? 'flxd.it'
-      url = url.match(/(.*\/([^_|.]*))/)[0] # url without format
-      format.gsub!(/^([^._])(.*)/, '_\1\2') # clean up
-      return url + format
-    else
-      re = /\/(?=[^\/]*$).*\..*/
-      [url.gsub(re, ''), format].join('/')
-    end
+    re = /\/(?=[^\/]*$).*\..*/
+    [url.gsub(re, ''), format].join('/')
   end
 
   ##

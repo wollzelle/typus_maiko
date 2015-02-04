@@ -22,7 +22,7 @@ class Typus.Maiko.Asset extends Backbone.Model
   # Set / normalize the url.
   # Provides backwards compatibility with typus_fluxiom
   setUrl: ->
-    key = if @collection.use_ssl? then 'maiko_https_url' else 'maiko_url'
+    key = if @collection.useSSL? then 'maiko_https_url' else 'maiko_url'
     @set 'url', @get key
     @set { maiko_url: undefined, maiko_https_url: undefined}, unset: true, silent:true
 

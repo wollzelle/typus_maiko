@@ -1,6 +1,6 @@
 module Admin::MaikoHelper
 
-  @@maikojs_url = "http://cdn.maikoapp.com/maiko.js"
+  @@maikojs_url = "https://www.maikoapp.com/maiko.js"
 
   @@default_preview_options = { width: 170, height: 100, crop: false }
 

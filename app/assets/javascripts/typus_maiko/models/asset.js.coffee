@@ -29,6 +29,7 @@ class Typus.Maiko.Asset extends Backbone.Model
   setThumbnail: ->
     { url, previewFormat } = @attributes
     thumbnail = Maiko.image url, previewFormat
+    thumbnail = thumbnail.replace('http://cdn.maikoapp.com', 'https://maiko.a.ssl.fastly.net') if window.location.protocol == 'https:'
     @set { thumbnail }
 
   setCaption: ->

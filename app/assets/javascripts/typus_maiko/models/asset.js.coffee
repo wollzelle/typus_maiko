@@ -22,7 +22,7 @@ class Typus.Maiko.Asset extends Backbone.Model
 
   # Set / normalize the url.
   setUrl: ->
-    key = if @collection.useSSL? then 'maiko_https_url' else 'maiko_url'
+    key = if @collection.useSSL is true then 'maiko_https_url' else 'maiko_url'
     @set 'url', @get key
     @set { maiko_url: undefined, maiko_https_url: undefined}, unset: true, silent:true
 

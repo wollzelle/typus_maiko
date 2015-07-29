@@ -3,7 +3,7 @@
 Maiko module for Typus, adds support for including images from maikoapp.com.
 
 * http://www.maikoapp.com
-* https://bitbucket.org/wollzelle/typus_maiko
+* https://github.com/wollzelle/typus_maiko
 * https://github.com/fesplugas/typus
 
 ## Installation
